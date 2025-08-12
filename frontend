@@ -3,4 +3,12 @@ npm create vite@latest . -- --template react
 npm install
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
+export default {
+  content: ['./index.html','./src/**/*.{js,jsx,ts,tsx}'],
+  theme: { extend: {} },
+  plugins: [],
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
