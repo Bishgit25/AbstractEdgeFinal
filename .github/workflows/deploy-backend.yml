@@ -1,0 +1,16 @@
+name: Deploy Backend (Railway)
+on:
+  push: { paths: ["backend/**", ".github/workflows/deploy-backend.yml"] }
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: devcontainers/ci@v0.2
+        with:
+          runCmd: |
+            npm i -g @railway/cli
+            railway up --service abstract-edge-backend --detach
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
